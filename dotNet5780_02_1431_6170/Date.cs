@@ -11,6 +11,7 @@ namespace dotNet5780_02_1431_6170
         int day;
         int month;
 
+
         public int Day // getter and setter
         {
             get { return day; }
@@ -47,10 +48,10 @@ namespace dotNet5780_02_1431_6170
         }
 
         //Constrooctor
-        public Date(int d, int m)
+        public Date(int day, int month)
         {
-            day = d;
-            month = m;
+            this.day = day;
+            this.month = month;
         }
         //default constroctor
         public Date()
