@@ -8,24 +8,18 @@ namespace dotNet5780_02_1431_6170
 {
     class HostingUnit
     {
-        private static int stSerialKey;
-        public int HostingUnitKey;
+        private static int stSerialKey = 10000000;
+        public int HostingUnitKey { get; private set; }
 
-        public int Hosting
+        
+        public HostingUnit()
         {
-            get
-            {
-                return HostingUnitKey;
-            }
-            private set
-            {
-                HostingUnitKey = stSerialKey;
-            }
-        }
-
-        HostingUnit()
-        {
-            ++stSerialKey;
+            this.HostingUnitKey = stSerialKey++;
         }
     }
 }
+
+
+
+
+

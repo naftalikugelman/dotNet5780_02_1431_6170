@@ -14,9 +14,10 @@ namespace dotNet5780_02_1431_6170
 
         public override string ToString()
         {
-            return @"Entry Date: " + EntryDate  +
+            return @"Entry Date: " + EntryDate  +  
                     "Release Date: " + ReleaseDate + 
                     "IsApproved: " + IsApproved;
         }
+        
     }
 }
