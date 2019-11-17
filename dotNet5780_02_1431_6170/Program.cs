@@ -19,8 +19,15 @@ namespace dotNet5780_02_1431_6170
             id1.ApproveRequest(g1);
             id1.debbugingPrintCalendar();
             Console.WriteLine(id1);
-            //Console.WriteLine("id: {0}", id2.HostingUnitKey);
-            Console.ReadKey();
+
+
+
+            Host h1 = new Host(1234567, 14);
+            h1.ToString();
+
+
+
+
         }
     }
 }

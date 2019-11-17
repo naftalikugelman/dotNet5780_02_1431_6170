@@ -13,7 +13,7 @@ namespace dotNet5780_02_1431_6170
 
         private static int stSerialKey = 10000000;
 
-        public int HostingUnitKey { get; private set; }
+        public int HostingUnitKey { get;}
 
         private bool[][] calendar = new bool[12][];
 
