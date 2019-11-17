@@ -17,9 +17,9 @@ namespace dotNet5780_02_1431_6170
 
         private bool[][] calendar = new bool[12][];
 
-        public int CompareTo(HostingUnit obj)
+        public int CompareTo(object obj)
         {
-            return this.GetAnnualBusyDays().CompareTo(obj.GetAnnualBusyDays());
+            return GetAnnualBusyDays().CompareTo(((HostingUnit)obj).GetAnnualBusyDays());
         }
 
         public void debbugingPrintCalendar()
