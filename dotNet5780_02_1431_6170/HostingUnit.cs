@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
+
 namespace dotNet5780_02_1431_6170
 {
     class HostingUnit : IComparable
@@ -16,18 +17,9 @@ namespace dotNet5780_02_1431_6170
 
         private bool[][] calendar = new bool[12][];
 
-        public int CompareTo(object obj)
+        public int CompareTo(HostingUnit obj)
         {
-            HostingUnit c = (HostingUnit)obj;
-
-            int myNumOfDays = this.GetAnnualBusyDays();
-            int hisNumOfDays = c.GetAnnualBusyDays();
-            if (myNumOfDays > hisNumOfDays) return 1;
-            else if (myNumOfDays < hisNumOfDays) return -1;
-            else return 0;
-
-           // return numReturn;
-            //id.CompareTo(((Student)obj).id)
+            return this.GetAnnualBusyDays().CompareTo(obj.GetAnnualBusyDays());
         }
 
         public void debbugingPrintCalendar()
