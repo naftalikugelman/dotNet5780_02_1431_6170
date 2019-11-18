@@ -19,7 +19,7 @@ namespace dotNet5780_02_1431_6170
             IsApproved = false;//TODO: change this?
         }
 
-        public int numOfDays()
+        public int NumOfDays()
         {
             int numOfDays = 0;
 
@@ -34,8 +34,8 @@ namespace dotNet5780_02_1431_6170
 
         public override string ToString()
         {
-            return @"Entry Date: " + EntryDate  +  
-                    "Release Date: " + ReleaseDate + 
+            return @"Entry Date: " + EntryDate.toString()  + "\n"  +
+                    "Release Date: " + ReleaseDate.toString() + "\n" +
                     "IsApproved: " + IsApproved;
         }
         

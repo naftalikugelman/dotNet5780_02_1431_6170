@@ -16,24 +16,66 @@ namespace dotNet5780_02_1431_6170
         {
             HostKey = Id;
             int Count = count;
-
-          
             //TO DO all rooms a available
-
         }
 
         public override string ToString()
         {
             String str ="";
-            foreach (HostingUnit item in HostingUnitCollection)
+            for (int i = 0; i < HostingUnitCollection.Count; i++)
             {
-                str += item.ToString();
+                str += HostingUnitCollection[i].ToString();
+                //HostingUnit unit = HostingUnitCollection[i];
+                //str += HostingUnitCollection[i].HostingUnitKey.ToString();
             }
-            return str; 
+            return str;
         }
 
+
+        private long SubmitRequest(GuestRequest guestReq)
+        {
+            for (int i = 0; i < HostingUnitCollection.Count; i++)
+            {
+                if (HostingUnitCollection[i].ApproveRequest(guestReq))
+                {
+                    return HostingUnitCollection[i].HostingUnitKey;
+                }
+            }
+            return -1;
+        }
+
+        public int GetHostAnnualBusyDays()
+        {
+            int sum = 0;
+            for (int i = 0; i < HostingUnitCollection.Count; i++)
+            {
+                sum += HostingUnitCollection[i].GetAnnualBusyDays();
+            }
+            return sum;
+        }
+
+        public void SortUnits()
+        {
+            HostingUnitCollection.Sort();
+        }        public bool AssignRequests(params GuestRequest[] guests)
+        {
+            bool AllRequestConfirm = true;
+            for (int i = 0; i < guests.Length; i++)
+            {
+                if (SubmitRequest(guests[i]) == -1)
+                {
+                    AllRequestConfirm = false;
+                }
+            }
+            return AllRequestConfirm;
+        }
+
+        private HostingUnit this[int index]
+        {
+            get { return HostingUnitCollection[index]; }
+            set { HostingUnitCollection[index] = value; }
+        }
         
-        
-        
+
     }
 }

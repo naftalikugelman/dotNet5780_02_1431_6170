@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 using System.Collections;
 
 
+
+
 namespace dotNet5780_02_1431_6170
 {
     class HostingUnit : IComparable
     {
 
         private static int stSerialKey = 10000000;
-
-        public int HostingUnitKey { get;}
+        public int HostingUnitKey { get; }
 
         private bool[][] calendar = new bool[12][];
 
-        public int CompareTo(object obj)
-        {
-            return GetAnnualBusyDays().CompareTo(((HostingUnit)obj).GetAnnualBusyDays());
-        }
+
 
         public void debbugingPrintCalendar()
         {
@@ -28,7 +26,7 @@ namespace dotNet5780_02_1431_6170
             {
                 for (int j = 0; j < 31; j++)
                 {
-                    if(calendar[i][j]) Console.Write("T ");
+                    if (calendar[i][j]) Console.Write("T ");
                     else Console.Write("F ");
                 }
                 Console.WriteLine();
@@ -46,6 +44,11 @@ namespace dotNet5780_02_1431_6170
                     calendar[i][j] = false;
                 }
             }
+        }
+
+        public int CompareTo(object obj)
+        {
+            return GetAnnualBusyDays().CompareTo(((HostingUnit)obj).GetAnnualBusyDays());
         }
 
         public override string ToString()
@@ -75,16 +78,16 @@ namespace dotNet5780_02_1431_6170
         {
             Date tempDate = new Date(guestReq.EntryDate.Day + 1, guestReq.EntryDate.Month);
             Date dateTemp = new Date(guestReq.EntryDate.Day, guestReq.EntryDate.Month);
-            for (int i = 0; i < guestReq.numOfDays() ; ++i)
+            for (int i = 0; i < guestReq.NumOfDays(); ++i)
             {
-                if(calendar[tempDate.Month - 1][tempDate.Day - 1])//Cheking if there is no other reservation at the same dates
+                if (calendar[tempDate.Month - 1][tempDate.Day - 1])//Cheking if there is no other reservation at the same dates
                 {
                     return false;
                 }
                 tempDate.nextDay();//jumps to next date
             }
             //After we know that there is no reservation we can add a new reservation
-            for (int i = 0; i < guestReq.numOfDays(); i++)
+            for (int i = 0; i < guestReq.NumOfDays(); i++)
             {
                 calendar[dateTemp.Month - 1][dateTemp.Day - 1] = true; //to get the current date we need to add - 1
                 dateTemp.nextDay();
@@ -117,11 +120,10 @@ namespace dotNet5780_02_1431_6170
             return per;
         }
 
+
         
     }
 }
-
-
 
 
 
