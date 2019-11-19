@@ -10,13 +10,14 @@ namespace dotNet5780_02_1431_6170
     class Host : IEnumerable<HostingUnit>
     {
         public int HostKey { get; set; }
-        public List<HostingUnit> HostingUnitCollection { get; set; }
+        public List<HostingUnit> HostingUnitCollection { get; set; } = new List<HostingUnit>();
 
         public Host(int Id, int count)
         {
             HostKey = Id;
             for (int i = 0; i < count; i++)
             {
+                //HostingUnit temp = new HostingUnit();
                 HostingUnitCollection.Add(new HostingUnit());
             }
         }
@@ -72,12 +73,15 @@ namespace dotNet5780_02_1431_6170
             return AllRequestConfirm;
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        public MyHostEnumerator GetEnumerator() { return new MyHostEnumerator(this); }
 
-         IEnumerator<HostingUnit> IEnumerable<HostingUnit>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
+        //public IEnumerator GetEnumerator()
+        //{
+        //    return this.GetEnumerator();
+        //}
+
+        IEnumerator<HostingUnit> IEnumerable<HostingUnit>.GetEnumerator()
         {
             return new MyHostEnumerator(this);
         }

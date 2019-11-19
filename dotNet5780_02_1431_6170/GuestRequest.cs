@@ -12,6 +12,10 @@ namespace dotNet5780_02_1431_6170
         public Date ReleaseDate { get; set; }
         public bool IsApproved { get; set; }
 
+        public GuestRequest() {
+            IsApproved = false;
+        }
+
         public GuestRequest(int entryDay, int entryMonth, int releasseDay, int releaseMonth)
         {
             EntryDate = new Date(entryDay, entryMonth);

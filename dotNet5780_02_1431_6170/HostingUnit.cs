@@ -109,7 +109,7 @@ namespace dotNet5780_02_1431_6170
         }
 
         //calculates the porcentage
-        public float GetAnnualBusyPercentage()
+        public float GetAnnualBusyPrecentege()
         {
             float Days = 372;
             float per;
