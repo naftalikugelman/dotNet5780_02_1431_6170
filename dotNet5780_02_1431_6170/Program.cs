@@ -21,7 +21,13 @@ namespace dotNet5780_02_1431_6170
             Console.WriteLine(h1);
             h1.debbugingPrintCalendar();
 
-            Host g1 = new Host(1234,5);
+            Host g1 = new Host(1234, 5);
+            var oi = g1[1];
+
+            foreach (var item in g1)
+            {
+                Console.WriteLine(item.ToString()); 
+            }
             Console.WriteLine(g1);
 
 

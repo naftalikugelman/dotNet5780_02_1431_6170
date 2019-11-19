@@ -18,8 +18,6 @@ namespace dotNet5780_02_1431_6170
 
         private bool[][] calendar = new bool[12][];
 
-
-
         public void debbugingPrintCalendar()
         {
             for (int i = 0; i < 12; i++)
@@ -45,7 +43,7 @@ namespace dotNet5780_02_1431_6170
                 }
             }
         }
-
+        
         public int CompareTo(object obj)
         {
             return GetAnnualBusyDays().CompareTo(((HostingUnit)obj).GetAnnualBusyDays());
