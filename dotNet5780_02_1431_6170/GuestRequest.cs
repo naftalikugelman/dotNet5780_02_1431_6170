@@ -42,6 +42,5 @@ namespace dotNet5780_02_1431_6170
                     "Release Date: " + ReleaseDate.toString() + "\n" +
                     "IsApproved: " + IsApproved;
         }
-        
     }
 }

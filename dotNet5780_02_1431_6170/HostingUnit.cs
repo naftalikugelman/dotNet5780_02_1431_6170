@@ -10,6 +10,7 @@ using System.Collections;
 
 namespace dotNet5780_02_1431_6170
 {
+
     class HostingUnit : IComparable
     {
 
@@ -43,7 +44,7 @@ namespace dotNet5780_02_1431_6170
                 }
             }
         }
-        
+
         public int CompareTo(object obj)
         {
             return GetAnnualBusyDays().CompareTo(((HostingUnit)obj).GetAnnualBusyDays());
@@ -51,7 +52,7 @@ namespace dotNet5780_02_1431_6170
 
         public override string ToString()
         {
-            string finalText = "Id: " + HostingUnitKey + "\n\tLocated Dates:\n";//Will print thus string at the end
+            string finalText = "Id: " + HostingUnitKey + "\nLocated Dates:\n";//Will print thus string at the end
             bool flag = false;// flag to know if we are at a middle of an reservation or if we just started
             for (int i = 0; i < 12; i++)//run over the monthes
             {
@@ -60,7 +61,7 @@ namespace dotNet5780_02_1431_6170
                     if (!flag && calendar[i][j])//If this day is reservated AND the last one hasn`t
                     {
                         flag = true;//set flag to true so we van now that next TRUE day is in a middle of a reservation
-                        finalText += "\tfrom " + (j + 1) + "/" + (i + 1) + " to ";//Adds the date to final print string
+                        finalText += "from: " + (j + 1) + "/" + (i + 1) + " to: ";//Adds the date to final print string
                     }
                     if (flag && !calendar[i][j])//If we have an FALSE day AND aur last day was a TRUE, so this reservation ends here...
                     {
@@ -69,17 +70,19 @@ namespace dotNet5780_02_1431_6170
                     }
                 }
             }
+            finalText += "-----------------------\n";
             return finalText;
         }
 
         public bool ApproveRequest(GuestRequest guestReq)
         {
-            Date tempDate = new Date(guestReq.EntryDate.Day + 1, guestReq.EntryDate.Month);
+            Date tempDate = new Date(guestReq.EntryDate.Day , guestReq.EntryDate.Month);
             Date dateTemp = new Date(guestReq.EntryDate.Day, guestReq.EntryDate.Month);
             for (int i = 0; i < guestReq.NumOfDays(); ++i)
             {
                 if (calendar[tempDate.Month - 1][tempDate.Day - 1])//Cheking if there is no other reservation at the same dates
                 {
+                    guestReq.IsApproved = false;
                     return false;
                 }
                 tempDate.nextDay();//jumps to next date
@@ -119,7 +122,7 @@ namespace dotNet5780_02_1431_6170
         }
 
 
-        
+
     }
 }
 

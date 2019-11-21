@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5780_02_1431_6170
 {
-    class Host : IEnumerable<HostingUnit>
+    class Host : IEnumerable
     {
         public int HostKey { get; set; }
         public List<HostingUnit> HostingUnitCollection { get; set; } = new List<HostingUnit>();
@@ -28,10 +28,11 @@ namespace dotNet5780_02_1431_6170
             for (int i = 0; i < HostingUnitCollection.Count; i++)
             {
                 str += HostingUnitCollection[i].ToString() + "\n";
+                //str += HostingUnitCollection[i].GetAnnualBusyDays() + "\n";
             }
+            //str += GetHostAnnualBusyDays();
             return str;
         }
-
 
         private long SubmitRequest(GuestRequest guestReq)
         {
@@ -45,7 +46,6 @@ namespace dotNet5780_02_1431_6170
             return -1;
         }
 
-
         public int GetHostAnnualBusyDays()
         {
             int sum = 0;
@@ -55,7 +55,6 @@ namespace dotNet5780_02_1431_6170
             }
             return sum;
         }
-
 
         public void SortUnits()
         {
@@ -73,17 +72,9 @@ namespace dotNet5780_02_1431_6170
             return AllRequestConfirm;
         }
 
-        public MyHostEnumerator GetEnumerator() { return new MyHostEnumerator(this); }
-
-        IEnumerator IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
-        //public IEnumerator GetEnumerator()
-        //{
-        //    return this.GetEnumerator();
-        //}
-
-        IEnumerator<HostingUnit> IEnumerable<HostingUnit>.GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            return new MyHostEnumerator(this);
+            return HostingUnitCollection.GetEnumerator();
         }
 
         public HostingUnit this[int index]
@@ -91,39 +82,7 @@ namespace dotNet5780_02_1431_6170
             get { return HostingUnitCollection[index]; }
             //set { HostingUnitCollection[index] = value; }
         }
-
-        public class MyHostEnumerator : IEnumerator<HostingUnit>
-        {
-            Host coll;
-            HostingUnit curr;
-            int cntr = -1;
-
-            internal MyHostEnumerator(Host coll) { this.coll = coll; }
-
-            void IDisposable.Dispose() { }
-
-            public HostingUnit Current { get { return curr; } }
-
-            object IEnumerator.Current { get { return this.curr; } }
-
-            public void Dispose()
-            {
-            }
-
-            public bool MoveNext()
-            {
-                if (++cntr >= coll.HostingUnitCollection.Count) return false;
-                else { curr = coll.HostingUnitCollection[cntr]; return true; }
-            }
-
-            public void Reset()
-            {
-            }
-        }
-
     }
-
-    
 }
 
 
