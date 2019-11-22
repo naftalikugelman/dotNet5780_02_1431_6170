@@ -1,4 +1,4 @@
-﻿//Daniel vofchuk and naftali kugelmann
+﻿//Daniel vofchuk - 000901431 & naftali kugelmann - 305606170
 
 using System;
 using System.Collections.Generic;
