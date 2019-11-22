@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Daniel vofchuk and naftali kugelmann
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,16 +17,16 @@ namespace dotNet5780_02_1431_6170
             int startDay = rand.Next(1, 32);
             int numOfDays = rand.Next(1, 11);
 
-            Date date = new Date(startDay, startMonth);
+            Date date = new Date(startDay, startMonth);//takes the inicial dates
 
-            for (int i = 0; i < numOfDays; i++)
+            for (int i = 0; i < numOfDays; i++)//addes the random num of days in a range of max 10 das
             {
                 date.nextDay();
             }
 
             GuestRequest gs = new GuestRequest(startDay, startMonth, date.Day, date.Month);
             return gs;
-        }
+        }//givven code
         static void Main(string[] args)
         {
             List<Host> lsHosts;

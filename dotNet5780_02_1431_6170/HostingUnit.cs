@@ -14,14 +14,14 @@ namespace dotNet5780_02_1431_6170
     class HostingUnit : IComparable
     {
 
-        private static int stSerialKey = 10000000;
+        private static int stSerialKey = 10000000; //strarts a 8 digit Unic Id
         public int HostingUnitKey { get; }
 
-        private bool[][] calendar = new bool[12][];
+        private bool[][] calendar = new bool[12][];//strats the calendar
 
         public void debbugingPrintCalendar()
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 12; i++)//prints all the callendar for debuging propouses (not in use)
             {
                 for (int j = 0; j < 31; j++)
                 {
@@ -35,7 +35,7 @@ namespace dotNet5780_02_1431_6170
         public HostingUnit()
         {
             this.HostingUnitKey = stSerialKey++;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 12; i++)//build the entire calendar and mark all as false
             {
                 calendar[i] = new bool[31];
                 for (int j = 0; j < 31; j++)
